@@ -1,16 +1,11 @@
 class Solution {
     public String solution(String phone_number) {
-        StringBuilder sb = new StringBuilder();
-        char[] arr = new char[phone_number.length()];
+        char[] ch = phone_number.toCharArray();
         
-        for(int i=0; i<phone_number.length(); i++) {
-            arr[i] = (i<phone_number.length()-4 ? '*' : phone_number.charAt(i));
+        for(int i=0; i < ch.length-4; i++) {
+            ch[i] = '*';
         }
         
-		for(char c : arr) {
-			sb.append(c);
-		}
-        
-        return sb.toString();
+        return String.valueOf(ch);
     }
 }
