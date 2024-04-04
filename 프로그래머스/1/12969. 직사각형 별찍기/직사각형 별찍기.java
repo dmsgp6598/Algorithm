@@ -1,24 +1,18 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 
 class Solution {
-    public static void main(String[] args) throws IOException {
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(bf.readLine(), " ");
-        StringBuilder sb = new StringBuilder();
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
         
-        int a = Integer.parseInt(st.nextToken());
-        int b = Integer.parseInt(st.nextToken());
-
-        for(int i=0; i<b; i++) {
-            for(int j=0; j<a; j++) {
-                sb.append("*");
-            }
-            sb.append('\n');
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<a; i++) {
+            sb.append("*");
         }
         
-        System.out.println(sb);
+        for(int j=0; j<b; j++) {
+            System.out.println(sb.toString());
+        }
     }
 }
