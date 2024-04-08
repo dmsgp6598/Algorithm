@@ -8,18 +8,19 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         
-        int N = Integer.parseInt(bf.readLine());
-        int[] arr = new int[N];
+        int T = Integer.parseInt(bf.readLine());
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
         
         StringTokenizer st = new StringTokenizer(bf.readLine(), " ");
         
-        for(int i=0; i<N; i++) {
-            arr[i] = Integer.parseInt(st.nextToken());
+        while(T-- > 0) {
+            int N = Integer.parseInt(st.nextToken());
+            max = Math.max(max, N);
+            min = Math.min(min, N);
         }
         
-        Arrays.sort(arr);
-        
-        System.out.println(arr[0] * arr[N-1]);
+        System.out.println(min * max);
         
     }
 }
