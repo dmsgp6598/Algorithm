@@ -12,17 +12,18 @@ public class Main {
         int T = Integer.parseInt(bf.readLine());
         int cnt = 0;
         
-        for(int i=0; i<T; i++) {
+        while(T-- > 0) {
             String str = bf.readLine();
             if(str.equals("ENTER")) {
+                cnt += hset.size();
                 hset = new HashSet<>();
             }else {
-                if(!hset.contains(str)) {
-                    hset.add(str);
-                    cnt++;
-                }
+                hset.add(str);
             }
         }
+        
+        cnt += hset.size();
+        
         System.out.println(cnt);
     }
 }
