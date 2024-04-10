@@ -1,17 +1,15 @@
-import java.util.HashSet;
+import java.util.ArrayList;
 
 class Solution {
     public int solution(int[] nums) {
-        int max = nums.length / 2;
+        ArrayList<Integer> list = new ArrayList<Integer>();
         
-        HashSet<Integer> hset = new HashSet<>();
-        
-        for(int n : nums) {
-            hset.add(n);
+        for(int n : nums){
+            if(!list.contains(n)){
+                list.add(n);
+            }
         }
-        
-        if(max >= hset.size()) return hset.size();
-        else return max;
-        
+
+        return nums.length/2 > list.size()?list.size():nums.length/2;
     }
 }
