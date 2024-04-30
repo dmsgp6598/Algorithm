@@ -4,10 +4,6 @@ import java.util.HashSet;
 
 class Solution {
     public int[] solution(String[] idList, String[] report, int k){
-        // @param idList : 이용자의 ID를 담은 배열.
-        // @param report : 신고한 이용자와 신고당한 이용자의 정보를 담은 배열. ex) "a b",.. -> a가 b를 신고
-        // @param k      : 신고 횟수에 따른 정지 기준 정수값.
-        // @return answer : id_list에 담긴 id 순서대로 각 유저가 받은 신고 결과 메일 개수 배열.
         int[] answer = new int[idList.length];
         HashMap<String, HashSet<String>> reporterInfoMap = new HashMap<>();
         HashMap<String, Integer> reportedCountInfoMap = new HashMap<>();
