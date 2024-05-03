@@ -5,8 +5,8 @@ class Solution {
         min = max = Integer.parseInt(arr[0]);
         for (String str : arr) {
             n = Integer.parseInt(str);
-            min = Math.min(min, n);
-            max = Math.max(max, n);
+            if(min > n) min = n;
+            if(max < n) max = n;
         }
 
         return min + " " + max;
