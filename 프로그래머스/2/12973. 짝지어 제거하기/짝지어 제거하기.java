@@ -12,9 +12,7 @@ class Solution
 				stack.push(ch);
 				continue;
 			} else {
-				if(stack.peek() == ch) {
-					stack.pop();
-				}
+				if(stack.peek() == ch) stack.pop();
 				else stack.push(ch);
 			}
 		}
