@@ -7,14 +7,15 @@ class Solution {
         int answer = 0;
         HashMap<Integer, Integer> map = new HashMap<>();
         
-        for(int n : tangerine) {
-            map.put(n, map.getOrDefault(n, 0) +1);
+        for(int i=0; i<tangerine.length; i++) {
+            map.put(tangerine[i], map.getOrDefault(tangerine[i], 0) +1);
         }
         
         ArrayList<Integer> list = new ArrayList<Integer>(map.values());
         Collections.sort(list, Collections.reverseOrder());
         
-        for(int value : list) {
+        for(int i=0; i<list.size(); i++) {
+        	int value = list.get(i);
         	if(value >= k) {
         		answer++;
         		break;
