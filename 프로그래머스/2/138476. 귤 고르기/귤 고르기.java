@@ -1,25 +1,30 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 
 class Solution {
     public int solution(int k, int[] tangerine) {
-        int sum = 0; // 고를 귤의 개수
-        int cnt = 0; // 최솟값 카운트
+        int answer = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
         
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-        for(int num : tangerine) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
+        for(int i=0; i<tangerine.length; i++) {
+            map.put(tangerine[i], map.getOrDefault(tangerine[i], 0) +1);
         }
-        ArrayList<Integer> valueList = new ArrayList<>(map.values());
-        Collections.sort(valueList, Collections.reverseOrder());
-        for (int v : valueList) {
-            if (sum + v >= k) {
-                cnt++;
-                break;
-            } else {
-                sum += v;
-                cnt++;
-            }
+        
+        ArrayList<Integer> list = new ArrayList<Integer>(map.values());
+        Collections.sort(list, Collections.reverseOrder());
+        
+        for(int i=0; i<list.size(); i++) {
+        	int value = list.get(i);
+        	if(value >= k) {
+        		answer++;
+        		break;
+        	}else if(value < k) {
+        		answer++;
+        		k -= value;
+        	}
         }
-        return cnt;
+        
+        return answer;
     }
 }
