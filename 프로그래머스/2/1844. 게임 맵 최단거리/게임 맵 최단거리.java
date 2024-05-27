@@ -1,41 +1,41 @@
-import java.io.*;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 class Solution {
     static int answer = -1;
 	static boolean[][] visited;
-	static int[] mrow = {-1, 1, 0 , 0};
-	static int[] mcol = {0, 0, -1, 1};
-    
-    public int solution(int[][] maps) {
-        visited = new boolean[maps.length][maps[0].length];
-        
-        bfs(0, 0, maps);
-        
-        return answer;
-    }
-    
-    public void bfs(int row, int col, int[][] maps) {
+	static int[] width = {-1, 1, 0 , 0};
+	static int[] length = {0, 0, -1, 1};
+	
+	public static int solution(int[][] maps) {
+		visited = new boolean[maps.length][maps[0].length];
+		
+		bfs(0, 0, maps);
+		
+		return answer;
+	}
+	
+	public static void bfs(int row, int col, int[][] maps) {
 		Queue<Node> q = new LinkedList<>();
 		q.add(new Node(0, 0, 1));
 		
 		visited[0][0] = true;
 		
 		while(!q.isEmpty()) {
-			Node cur = q.poll();
+			Node node = q.poll();
 			
-			if(cur.row == maps.length-1 && cur.col == maps[0].length-1) {
-				answer = cur.cnt;
+			if(node.row == maps.length-1 && node.col == maps[0].length-1) {
+				answer = node.cnt;
 				return;
 			}
 			
 			for(int i=0; i<4; i++) {
-				int nextRow = cur.row + mrow[i];
-				int nextCol = cur.col + mcol[i];
+				int nRow = node.row + width[i];
+				int nCol = node.col + length[i];
 				
-				if(chkNode(nextRow, nextCol, maps)) {
-					visited[nextRow][nextCol] = true;
-					q.add(new Node(nextRow, nextCol, cur.cnt+1));
+				if(chkNode(nRow, nCol, maps)) {
+					visited[nRow][nCol] = true;
+					q.add(new Node(nRow, nCol, node.cnt+1));
 				}
 				
 			}
@@ -43,8 +43,8 @@ class Solution {
 		}
 		
 	}
-    
-    class Node {
+	
+	static class Node {
 		int row;
 		int col;
 		int cnt;
@@ -55,9 +55,9 @@ class Solution {
 			this.cnt = cnt;
 		}
 	}
-    
-    public boolean chkNode(int row, int col, int[][] maps) {
-        return row >= 0 && row < visited.length && col >= 0 && col < visited[0].length
-                    && !visited[row][col] && maps[row][col] != 0;
-    }
+
+	public static boolean chkNode(int row, int col, int[][] maps) {
+		return row >= 0 && col >= 0 && row < visited.length && col < visited[0].length
+				&& !visited[row][col] && maps[row][col] != 0;
+	}
 }
