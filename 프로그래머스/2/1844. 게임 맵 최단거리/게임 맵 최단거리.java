@@ -17,7 +17,7 @@ class Solution {
 	
 	public static void bfs(int row, int col, int[][] maps) {
 		Queue<Node> q = new LinkedList<>();
-		q.add(new Node(0, 0, 1));
+		q.offer(new Node(0, 0, 1));
 		
 		visited[0][0] = true;
 		
@@ -35,7 +35,7 @@ class Solution {
 				
 				if(chkNode(nRow, nCol, maps)) {
 					visited[nRow][nCol] = true;
-					q.add(new Node(nRow, nCol, node.cnt+1));
+					q.offer(new Node(nRow, nCol, node.cnt+1));
 				}
 				
 			}
