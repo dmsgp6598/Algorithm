@@ -1,49 +1,68 @@
+import java.io.*;
 import java.util.*;
 
+// start 1:14
+
 class Solution {
+    static int answer = -1;
+    static boolean[][] visited;
+    static int[] mrow = {-1, 1, 0, 0};
+    static int[] mcol = {0, 0, -1, 1};
     
-    int[] dx = {1, 0, -1, 0};
-    int[] dy = {0, 1, 0, -1};
     
     public int solution(int[][] maps) {
-        int answer = 0;
+        visited = new boolean[maps.length][maps[0].length];
         
-        int[][] visited = new int[maps.length][maps[0].length];
-        
-        bfs(maps, visited);
-        answer = visited[maps.length-1][maps[0].length-1];
-        
-        if(answer == 0){
-            answer = -1;
-        }
+        bfs(0, 0, maps);
         
         return answer;
     }
     
-    public void bfs(int[][] maps, int[][] visited){
-        int x = 0;
-        int y = 0;
-        visited[x][y] = 1;
-        Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{x, y});
+    public void bfs(int row, int col, int[][] maps) {
+        Queue<Node> q = new LinkedList<>();
         
-        while(!queue.isEmpty()){
-            int[] current = queue.remove();
-            int cX = current[0];
-            int cY = current[1];
+        q.add(new Node(0, 0, 1));
+        visited[0][0] = true;
+        
+        while (!q.isEmpty()) {
+            Node cur = q.poll();
             
-            for(int i = 0; i < 4; i++){
-                int nX = cX + dx[i];
-                int nY = cY + dy[i];
+
+        // System.out.printf("row=%d, col=%d, count = %d\n", cur.row, cur.col, cur.count);
+
+            if (cur.row == maps.length - 1 && cur.col == maps[0].length - 1) {
+                answer = cur.count;
+                // System.out.println("catch");
+                return;
+            }
+            for (int i = 0; i < 4; i++) {
+                int nextRow = cur.row + mrow[i];
+                int nextCol = cur.col + mcol[i];
                 
-                if(nX < 0 || nX > maps.length-1 || nY < 0 || nY > maps[0].length-1)
-                    continue;
-                
-                if(visited[nX][nY] == 0 && maps[nX][nY] == 1){
-                    visited[nX][nY] = visited[cX][cY] + 1;
-                    queue.add(new int[]{nX, nY});
+                if (canMove(nextRow, nextCol, maps)) {
+                    // System.out.printf("add row=%d, col=%d, count = %d\n", cur.row, cur.col, cur.count);
+                    visited[nextRow][nextCol] = true;
+                    q.add(new Node(nextRow, nextCol, cur.count + 1));
                 }
+                
             }
         }
+    }
+    
+    class Node {
+        int row;
+        int col;
+        int count;
+        
+        public Node(int row, int col, int count) {
+            this.row = row;
+            this.col = col;
+            this.count = count;
+        }
+    }
+    
+    public boolean canMove(int row, int col, int[][] maps) {
+        return row >= 0 && row < visited.length && col >= 0 && col < visited[0].length
+                    && !visited[row][col] && maps[row][col] != 0;
     }
 }
