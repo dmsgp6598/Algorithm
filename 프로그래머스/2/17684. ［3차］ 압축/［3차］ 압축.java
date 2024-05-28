@@ -1,27 +1,31 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 class Solution {
-    public ArrayList<Integer> solution(String msg) {
-        int[] answer = {};
-        ArrayList<Integer> ans = new ArrayList<Integer>();
-        int ind = 1; 
-        HashMap<String, Integer> hs = new HashMap<String,Integer>();
-        for(char i = 'A'; i<='Z'; i++){
-            hs.put(i+"",ind++);
+    public static int[] solution(String msg) {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		
+		int idx = 1;
+		for(char i='A'; i<='Z'; i++) {
+			map.put(String.valueOf(i), idx++);
+		}
+        
+		int size = msg.length();
+        for(int i=0; i<size; i++) {
+        	int len = 1;
+        	while(i+len<=size && map.containsKey(msg.substring(i, i+len))) {
+        		len++;
+        	}
+        	if(i+len > size) {
+        		list.add(map.get(msg.substring(i)));
+        		break;
+        	}
+        	list.add(map.get(msg.substring(i, i+len-1)));
+        	map.put(msg.substring(i, i+len), idx++);
+        	if(len>1) i+=len-2;
         }
-        int size = msg.length();
-        for(int i =0; i< size; i++){
-            int a = 1;
-            while(i+a<=size && hs.containsKey(msg.substring(i,i+a))){
-                a++;
-            }
-            if(i+a>size){
-                ans.add(hs.get(msg.substring(i)));
-                break;
-            }
-            ans.add(hs.get(msg.substring(i,i+a-1)));
-            hs.put(msg.substring(i,i+a),ind++);
-            if(a>1)i+=a-2;
-        }
-        return ans;
-    }
+        
+        return list.stream().mapToInt(Integer::intValue).toArray();
+	}
 }
