@@ -1,4 +1,4 @@
-import java.util.HashSet;
+import java.util.*;
  
 public class Solution {
     public static int solution(String dirs) {
@@ -6,7 +6,6 @@ public class Solution {
  
         HashSet<String> visited = new HashSet<>();
  
-        // 시작 위치
         int currentX = 0;
         int currentY = 0;
  
