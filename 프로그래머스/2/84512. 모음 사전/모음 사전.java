@@ -1,5 +1,6 @@
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
+
 class Solution {
     static List<String> list;
     static String [] words = {"A", "E", "I", "O", "U"};
