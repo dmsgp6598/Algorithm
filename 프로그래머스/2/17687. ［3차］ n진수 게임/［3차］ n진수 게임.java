@@ -3,9 +3,8 @@ class Solution {
         StringBuilder convert = new StringBuilder();
         StringBuilder answer = new StringBuilder();
         
-        int num = 0;
-        while(convert.length() < t * m) {
-        	convert.append(Integer.toString(num++, n));
+        for(int i=0; convert.length() <= t*m; i++) {
+            convert.append(Integer.toString(i, n));
         }
         
         for(int i=0; i<t; i++) {
