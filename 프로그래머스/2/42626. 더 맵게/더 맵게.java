@@ -15,12 +15,10 @@ class Solution {
         	que.offer(scoville[i]);
         }
         
-        while(que.peek() < K) {
-        	if(que.size() == 1) return -1;
-        	
-        	que.offer(que.poll() + que.poll() * 2);
+        while(que.size() > 1 && que.peek() < K) {
+        	que.offer(que.remove() + que.remove() * 2);
         	answer++;
         }
-		return answer;
+		return que.peek() >= K ? answer : -1;
 	}
 }
