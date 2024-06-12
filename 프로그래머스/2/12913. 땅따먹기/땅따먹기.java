@@ -8,7 +8,7 @@ class Solution {
         }
 
         int answer = 0;
-		// 마지막 행의 최댓값을 구해서 answer에 저장
+		
         for(int i = 0; i < 4; i++) {
             answer = Math.max(answer, land[land.length-1][i]);
         }
