@@ -1,4 +1,3 @@
-
 class Solution {
     int solution(int[][] land) {
         for(int i = 1; i < land.length; i++) {
