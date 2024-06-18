@@ -1,4 +1,6 @@
 import java.util.*;
+
+
 class Solution {
     public int solution(int[] topping) {
         int answer = 0;
