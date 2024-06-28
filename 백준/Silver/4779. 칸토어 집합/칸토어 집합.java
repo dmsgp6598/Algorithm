@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 // 4779. 칸토어 집합 
 public class Main {
