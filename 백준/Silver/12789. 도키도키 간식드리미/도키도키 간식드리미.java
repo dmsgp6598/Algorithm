@@ -1,8 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
-import java.util.StringTokenizer;
-import java.util.Stack;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -41,9 +40,9 @@ public class Main {
         for(int i=0; i<stack.size(); i++) {
             int num = stack.pop();
             
-            if(num == val) {
+            if(num == val)
                 val++;
-            }else {
+            else {
             	result = false;
                 break;
             }

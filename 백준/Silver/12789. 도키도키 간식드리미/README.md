@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 14364 KB, 시간: 132 ms
+메모리: 14484 KB, 시간: 116 ms
 
 ### 분류
 
@@ -12,7 +12,7 @@
 
 ### 제출 일자
 
-2024년 2월 16일 17:01:18
+2024년 7월 9일 21:26:02
 
 ### 문제 설명
 
@@ -28,7 +28,7 @@
 
 <p>위 예제는 다음 그림과 같이 움직였을 때 모두가 순서대로 간식을 받을 수 있다..</p>
 
-<p style="text-align:center"><img alt="" src="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/12789/2.png" style="height:119px; width:470px"></p>
+<p style="text-align:center"><img alt="" src="" style="height:119px; width:470px"></p>
 
 ### 입력 
 
